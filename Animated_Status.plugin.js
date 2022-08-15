@@ -3,9 +3,9 @@
 class AnimatedStatus {
 	/* BD functions */
 	getName() { return "Animated Status"; }
-	getVersion() { return "0.13.2"; }
-	getAuthor() { return "toluschr"; }
-	getDescription() { return "Animate your Discord status"; }
+	getVersion() { return "1.0.0"; }
+	getAuthor() { return "toluschr & Mapler"; }
+	getDescription() { return "Animate your Discord status. | This may get your Discord account banned, use with caution."; }
 
 	SetData(key, value) {
 		BdApi.setData("AnimatedStatus", key, value);
@@ -18,7 +18,7 @@ class AnimatedStatus {
 	/* Code related to Animations */
 	load() {
 		this.kSpacing = "15px";
-		this.kMinTimeout = 2900;
+		this.kMinTimeout = 0;
 		this.cancel = undefined;
 
 		this.animation = this.GetData("animation") || [];
@@ -203,6 +203,7 @@ class AnimatedStatus {
 
 		// timeout
 		settings.appendChild(GUI.newLabel("Step-Duration (3000: 3 seconds, 3500: 3.5 seconds, ...), overwritten by invididual steps"));
+		settings.appendChild(GUI.newLabel("No minimum timeout thanks to Maplerxyz <3"));
 		let timeout = settings.appendChild(GUI.newNumericInput(this.timeout, this.kMinTimeout));
 		timeout.style.marginBottom = this.kSpacing;
 
@@ -303,9 +304,8 @@ const GUI = {
 		let out = GUI.newInput(text, placeholder);
 		out.setAttribute("type", "number");
 		out.addEventListener("focusout", () => {
-			if (parseInt(out.value) < minimum) {
-				out.value = String(minimum);
-				BdApi.showToast(`Value must not be lower than ${minimum}`, {type: "error"});
+			if (parseInt(out.value) < 2900) {
+				BdApi.showToast(`Discord may ban you if you go under 2900.`, {type: "error"});
 			}
 		});
 		return out;
