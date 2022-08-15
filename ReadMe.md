@@ -10,6 +10,9 @@
     * [Nitro Emoji](#Nitro-Emoji)
   * [Examples](#Examples)
 
+## What was changed in this fork?
+I removed the minimum timeout (as it was soooo slow). But to warn users about the dangers of a low timeout I added a warning telling them about the dangers of changing statuses very fast automaticly.
+
 ## Installation
 Install using the very convenient [BetterDiscord installer](https://github.com/BetterDiscord/Installer/releases/latest) \
 Download [Animated_Status.plugin.js](/Animated_Status.plugin.js?raw=true) into the following directory \
@@ -35,7 +38,7 @@ Example: With a timeout of 2000, the following animation would take 4 seconds to
 abc
 def
 ```
-To prevent the discord server from being spammed with requests, the minimum allowed timeout is hardcoded to be 2.9 seconds. \
+To prevent the discord server from being spammed with requests, we suggest you keep you set your timeout to something over 2900. But, unlike the project this was forked from there is no hardcoded timeout in this fork. \
 Logically, the animation timeout should be at least `2900`. At best, it should be roughly `10000` milliseconds (10 seconds) for the animation to look smooth on other clients. \
 In the mobile app, the status isn't updated consistently, i.e. the list of server members is updated based on the users actions in the app. Don't be surprised, if the animation doesn't appear smooth, or skips frames. \
 ^ According to [@pintoso](https://github.com/pintoso)
